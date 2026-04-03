@@ -1,3 +1,6 @@
+lobal · CSS
+Copy
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -5,6 +8,7 @@
 }
  
 :root {
+  --white:    #fff;
   --purple:    #6b4fbf;
   --pink:      #e0077d;
   --pink-dark: #c0066b;
@@ -17,13 +21,8 @@
   --col-w:     344px;
 }
  
-html {
-  height: 100%;
-  overflow: hidden;
-}
-
 body {
-  height: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   font-family: 'Nunito', sans-serif;
@@ -62,7 +61,6 @@ nav a:hover {
   justify-content: center;
   align-items: stretch;
   height: calc(100vh - var(--nav-h));
-  /* clip hero-right when narrow, never clip hero-left */
   overflow: hidden;
 }
  
@@ -72,10 +70,8 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3.5rem 3rem 3.5rem 3rem;
+  padding: 3.5rem 3rem;
   gap: 1.6rem;
-  /* shrink is allowed so it compresses before overflow kicks in,
-     but min-width keeps content visible — hero-right clips first */
   flex-shrink: 1;
   min-width: 0;
 }
@@ -97,20 +93,17 @@ nav a:hover {
   line-height: 1.08;
 }
  
-.line-purple {
-  font-family: 'Fredoka One', cursive;
-  font-size: clamp(3rem, 5.5vw, 5rem);
-  color: var(--purple);
-}
- 
+.line-purple,
 .line-pink {
   font-family: 'Fredoka One', cursive;
   font-size: clamp(3rem, 5.5vw, 5rem);
-  color: var(--pink);
 }
  
+.line-purple { color: var(--purple); }
+.line-pink   { color: var(--pink);   }
+ 
 .hero-tagline {
-  font-size: 1.05rem;
+  font-size: 1.45rem;
   color: #444;
   max-width: 38ch;
 }
@@ -121,6 +114,8 @@ nav a:hover {
   flex-wrap: wrap;
   margin-top: 0.4rem;
 }
+ 
+/* ── BUTTONS ── */
  
 .btn {
   display: inline-block;
@@ -148,7 +143,6 @@ nav a:hover {
   display: flex;
   justify-content: flex-start;
   gap: var(--gap);
-  /* ideal width is two columns + gap, but shrinks if hero-left needs the space */
   width: calc(var(--col-w) * 2 + var(--gap));
   flex-shrink: 1;
   min-width: var(--col-w);
@@ -156,6 +150,7 @@ nav a:hover {
   transform: translateZ(0);
 }
  
+/* Top & bottom fades */
 .hero-right::before,
 .hero-right::after {
   content: '';
@@ -247,20 +242,182 @@ nav a:hover {
   display: none;
 }
  
-/* ── SINGLE COLUMN (≤1400px) ── */
+/* ── Price guide ── */
+ 
+.pg {
+  background: var(--white);
+  padding: 3rem 2rem 4rem;
+}
+ 
+.pg-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 2.8rem;
+  color: var(--pink);
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+ 
+.pg-rule {
+  width: 60px;
+  height: 3px;
+  background: var(--purple);
+  border-radius: 2px;
+  margin: 0 auto 2.5rem;
+}
+ 
+.pg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+ 
+.pg-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+ 
+.pg-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.15rem;
+  color: var(--purple);
+  margin-bottom: 0.6rem;
+}
+ 
+.pg-img-wrap {
+  width: 100%;
+  margin-bottom: 0.9rem;
+}
+ 
+.pg-img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 12px;
+  background: var(--gray-img);
+  display: block;
+  border: 3px solid var(--lavender);
+}
+ 
+.pg-label {
+  font-size: 0.82rem;
+  color: #555;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+ 
+.pg-price {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.6rem;
+  color: var(--pink);
+}
+ 
+.pg-note {
+  text-align: center;
+  margin: 2.5rem auto 0;
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 560px;
+}
+ 
+.pg-note strong {
+  color: var(--purple);
+  font-weight: 700;
+}
+ 
+/* ── ABOUT ── */
 
+.about {
+  background: var(--lavender);
+  padding: 5rem 2rem;
+}
+
+.about-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-heading {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  color: var(--purple);
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+}
+
+.about-rule {
+  width: 60px;
+  height: 3px;
+  background: var(--pink);
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+}
+
+.about-body {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 2rem;
+}
+
+.about-img-wrap {
+  position: relative;
+  padding: 14px;
+}
+
+.about-img-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 3px solid var(--pink);
+  border-radius: 22px;
+  transform: rotate(2.5deg);
+}
+
+.about-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* ── SINGLE COLUMN (≤1400px) ── */
+ 
 @media (max-width: 1400px) {
   .hero-right {
     width: var(--col-w);
   }
-
+ 
   .hero-right .marquee-col:nth-child(2) {
     display: none;
   }
 }
-
-/* ── MOBILE ── */
-
+ 
+/* ── TABLET (≤700px) — price grid ── */
+ 
+@media (max-width: 700px) {
+  .pg-grid { grid-template-columns: repeat(2, 1fr); }
+}
+ 
+/* ── MOBILE (≤768px) ── */
+ 
 @media (max-width: 768px) {
  
   nav {
@@ -281,7 +438,6 @@ nav a:hover {
     padding: 2.5rem 1.5rem;
     align-items: center;
     text-align: center;
-    flex-shrink: 1;
   }
  
   .logo-wrapper { width: 180px; }
@@ -292,7 +448,6 @@ nav a:hover {
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
-    flex-shrink: 1;
     gap: 20px;
     padding: 0 0 2rem;
     overflow: hidden;
@@ -361,4 +516,6 @@ nav a:hover {
   .hero-right:active .marquee-col {
     animation-play-state: paused;
   }
+ 
+  .pg-grid { grid-template-columns: 1fr; }
 }
