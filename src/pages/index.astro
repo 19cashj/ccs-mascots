@@ -4,6 +4,7 @@ import Nav from '../components/Nav.astro';
 import MarqueeGallery from '../components/MarqueeGallery.astro';
 import '../styles/global.css';
 import '../styles/index.css';
+import '../styles/priceguide.css';
  
 const galleryImages: string[] = [
   '/images/imgi_4_650395250_25888888610794866_8401919460525743794_n.jpg',
@@ -31,10 +32,42 @@ const galleryImages: string[] = [
 ];
  
 const tiers = [
-  { name: 'Heads',                price: '$1600+', image: '/images/price-heads.jpg'       },
-  { name: 'Partial Suits',        price: '$2200+', image: '/images/price-partials.jpg'    },
-  { name: 'Plantigrade Fursuits', price: '$3200+', image: '/images/price-plantigrade.jpg' },
-  { name: 'Digitigrade Fursuits', price: '$3700+', image: '/images/price-digitigrade.jpg' },
+  {
+    name: 'Foam Carved Fursuit Head',
+    price: '$1600+',
+    image: '/images/price-heads.jpg',
+    description: 'Our foam-based heads are meticulously custom carved and feature a full neoprene scuba-type lining for exceptional comfort and fit. The 3D printed plastic eyes are designed with waterproof printed mesh, ensuring effortless cleaning and exceptional durability.',
+  },
+  {
+    name: '3D Print Base Fursuit Head',
+    price: '$1600+',
+    image: '/images/price-heads3d.jpg',
+    description: 'With a 3D printed base, this fantastic option caters to individuals who appreciate a sturdy structure. It comes with the choice of semi-realistic or toony style bases, offering delightful customization opportunities.',
+  },
+  {
+    name: 'Fursuit Mini-Partial',
+    price: '$2200+',
+    image: '/images/price-minipartial.jpg',
+    description: 'Our mini-partials offer you the perfect opportunity to showcase your unique character with style. This top-notch option includes a headpiece, fully lined costume paws, and a fabulous fluffy tail, all designed to truly immerse you in your character.',
+  },
+  {
+    name: 'Fursuit ¾ Partial',
+    price: '$2600+',
+    image: '/images/price-3quarter.jpg',
+    description: 'Are you seeking to elevate your character\'s appearance? Our 3/4 Fursuit option goes above and beyond, incorporating arm sleeves and feet paws to enhance the overall look.',
+  },
+  {
+    name: 'Plantigrade Fullbody Fursuit',
+    price: '$3200+',
+    image: '/images/price-plantigrade.jpg',
+    description: 'Just one step away from achieving the ultimate fursuit look. Our full body setup includes a body suit to create an absolutely complete and impressive appearance.',
+  },
+  {
+    name: 'Digitigrade Full Body Fursuit',
+    price: '$3700+',
+    image: '/images/price-digitigrade2.jpg',
+    description: 'The Ultimate Look! Our full-body padded bodysuits are included in the package to help you achieve a beautifully anatomically correct animal appearance. They feature convenient zipper pockets for effortless cleaning, travel, and stuffing replacement. Additionally, we offer the option to add outside pockets upon request.',
+  },
 ];
 ---
  
@@ -72,35 +105,37 @@ const tiers = [
  
   <!-- ── PRICING ── -->
   <section class="pg" id="pricing">
- 
-    <h2 class="pg-title">Costs</h2>
-    <div class="pg-rule"></div>
- 
-    <div class="pg-grid">
-      {tiers.map(tier => (
-        <div class="pg-card">
-          <p class="pg-name">{tier.name}</p>
-          <div class="pg-img-wrap">
-            <img src={tier.image} alt={tier.name} class="pg-img" />
-          </div>
-          <div class="pg-pricing">
-            <p class="pg-label">Starting at</p>
-            <p class="pg-price">{tier.price}</p>
-          </div>
-        </div>
-      ))}
+    <div class="pg-page">
+
+      <header class="pg-header">
+        <h1 class="pg-header-title">Price Guide</h1>
+        <div class="pg-header-rule"></div>
+      </header>
+
+      <div class="pg-list">
+        {tiers.map((tier) => (
+          <article class="pg-item">
+            <div class="pg-item-img-wrap">
+              <img src={tier.image} alt={tier.name} class="pg-item-img" />
+            </div>
+            <div class="pg-item-body">
+              <h2 class="pg-item-name">{tier.name}</h2>
+              <div class="pg-item-price-wrap">
+                <span class="pg-item-from">Starting at</span>
+                <span class="pg-item-price">{tier.price}</span>
+              </div>
+              <p class="pg-item-desc">{tier.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <aside class="pg-disclaimer">
+        <strong>Please note:</strong> Prices listed are for basic with no added extras. 
+        Costs may increase to reflect added details and design difficulty.
+      </aside>
+
     </div>
- 
-    <p class="pg-note">
-      <strong>Please note:</strong> prices listed are for basic builds with no added extras.<br />
-      Costs may increase to reflect added details and design difficulty.
-    </p>
-
-    <div class="pg-cta">
-      <a href="/price-guide" class="btn">Full Price Guide</a>
-
-    </div>
-
   </section>
 
   <!-- ── ABOUT ── -->
