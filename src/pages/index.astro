@@ -60,7 +60,7 @@ const tiers = [
       </p>
  
       <div class="hero-buttons">
-        <a href="#pricing" class="btn">Price Guide</a>
+        <a href="#pricing" class="btn">Get a Quote</a>
         <a href="/terms"   class="btn">Terms of Service</a>
       </div>
     </div>
@@ -82,8 +82,10 @@ const tiers = [
           <div class="pg-img-wrap">
             <img src={tier.image} alt={tier.name} class="pg-img" />
           </div>
-          <p class="pg-label">Starting at</p>
-          <p class="pg-price">{tier.price}</p>
+          <div class="pg-pricing">
+            <p class="pg-label">Starting at</p>
+            <p class="pg-price">{tier.price}</p>
+          </div>
         </div>
       ))}
     </div>
@@ -92,6 +94,10 @@ const tiers = [
       <strong>Please note:</strong> prices listed are for basic builds with no added extras.<br />
       Costs may increase to reflect added details and design difficulty.
     </p>
+
+    <div class="pg-cta">
+      <a href="/price-guide" class="btn">Full Price Guide</a>
+    </div>
 
   </section>
 
@@ -120,5 +126,119 @@ const tiers = [
 
     </div>
   </section>
+
+  <!-- ── REVIEWS ── -->
+  <section class="reviews" id="reviews">
+    <h2 class="reviews-title">Our Happy Customers</h2>
+    <div class="reviews-rule"></div>
+
+    <div class="reviews-carousel">
+      <button class="reviews-arrow reviews-prev" aria-label="Previous review">&#8249;</button>
+
+      <div class="reviews-track-wrap">
+        <div class="reviews-track">
+
+          <div class="review-slide">
+            <div class="review-img-wrap">
+              <img src="/images/imgi_15_542759485_1331610202302030_3496552279551058264_n.jpg" alt="Customer fursuit" class="review-img" />
+            </div>
+            <div class="review-content">
+              <span class="review-qdeco review-qdeco--open">&ldquo;</span>
+              <blockquote class="review-quote">Super cute fursuit, amazing quality, great ventilation and vision. The seller was super kind and amazing to work with.</blockquote>
+              <span class="review-qdeco review-qdeco--close">&rdquo;</span>
+              <div class="review-stars">★★★★★</div>
+            </div>
+          </div>
+
+          <div class="review-slide">
+            <div class="review-img-wrap">
+              <img src="/images/imgi_8_649224438_18092107570873773_3593664648647826824_n.jpg" alt="Customer fursuit" class="review-img" />
+            </div>
+            <div class="review-content">
+              <span class="review-qdeco review-qdeco--open">&ldquo;</span>
+              <blockquote class="review-quote">Absolutely love my suit! The craftsmanship is incredible and it arrived faster than expected. Will definitely be ordering again.</blockquote>
+              <span class="review-qdeco review-qdeco--close">&rdquo;</span>
+              <div class="review-stars">★★★★★</div>
+            </div>
+          </div>
+
+          <div class="review-slide">
+            <div class="review-img-wrap">
+              <img src="/images/imgi_22_650999120_18106227037885867_9219586718479070233_n.jpg" alt="Customer fursuit" class="review-img" />
+            </div>
+            <div class="review-content">
+              <span class="review-qdeco review-qdeco--open">&ldquo;</span>
+              <blockquote class="review-quote">Exceeded all my expectations. Communication was excellent throughout the whole process and the end result was stunning.</blockquote>
+              <span class="review-qdeco review-qdeco--close">&rdquo;</span>
+              <div class="review-stars">★★★★★</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <button class="reviews-arrow reviews-next" aria-label="Next review">&#8250;</button>
+    </div>
+
+    <div class="reviews-dots"></div>
+  </section>
+
+  <script>
+    const track = document.querySelector('.reviews-track') as HTMLElement;
+    const slides = Array.from(document.querySelectorAll('.review-slide')) as HTMLElement[];
+    const dotsWrap = document.querySelector('.reviews-dots') as HTMLElement;
+    let current = 0;
+
+    const dots = slides.map((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'reviews-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', `Review ${i + 1}`);
+      d.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(d);
+      return d;
+    });
+
+    function goTo(n: number) {
+      current = (n + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    document.querySelector('.reviews-prev')!.addEventListener('click', () => goTo(current - 1));
+    document.querySelector('.reviews-next')!.addEventListener('click', () => goTo(current + 1));
+  </script>
+
+  <!-- ── CTA BANNER ── -->
+  <section class="cta-banner">
+    <img src="/images/cta-banner.jpg" alt="" class="cta-bg" aria-hidden="true" />
+    <div class="cta-overlay">
+      <h2 class="cta-heading">Ready to Bring Your Character to Life?</h2>
+      <p class="cta-sub">Custom fursuits built with love, right here in Maine.</p>
+      <a href="#pricing" class="btn cta-btn">Get a Quote</a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+
+      <p class="footer-tagline">Delivering smiles to the Furry Community and<br />Costume Enthusiasts alike since 2014</p>
+
+      <div class="footer-contact">
+        <p>Augusta ME, 04330</p>
+        <a href="mailto:CraftyWolf@ccsmascots.net">CraftyWolf@ccsmascots.net</a>
+      </div>
+
+      <nav class="footer-links">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/privacy">Privacy and Cookies</a>
+      </nav>
+
+    </div>
+  </footer>
 
 </Base>
