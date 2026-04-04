@@ -6,8 +6,17 @@ const links = [
 ];
 ---
 <nav>
-  <a href="/">Home</a>
-  {links.map(link => (
-    <a href={link.href}>{link.label}</a>
-  ))}
+  <a href="/" class="nav-logo" aria-label="Home">
+    <img src="/images/logo.webp" alt="CCS Mascots" />
+  </a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    {links.map(link => (
+      <a href={link.href}>{link.label}</a>
+    ))}
+  </div>
 </nav>
+
+<script>
+  document.querySelector('.nav-logo')!.classList.add('visible');
+</script>

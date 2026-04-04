@@ -1,5 +1,9 @@
 /* ── PAGE WRAPPER ── */
 
+.pg {
+    background-color: var(--white);
+}
+
 .pg-page {
   max-width: 1500px;
   margin: 0 auto;
@@ -46,7 +50,7 @@
   justify-items: center;
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1470px) {
   .pg-list {
     grid-template-columns: 1fr 1fr;
   }
@@ -60,7 +64,19 @@
   background: #fff;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 24px rgba(107, 79, 191, 0.08);
+  box-shadow: 0 8px 40px rgba(107, 79, 191, 0.18);
+  opacity: 0;
+  translate: -48px 0;
+  transition: opacity 0.6s ease, translate 0.6s ease;
+}
+
+.pg-item:nth-child(even) {
+  translate: 48px 0;
+}
+
+.pg-item.visible {
+  opacity: 1;
+  translate: 0 0;
 }
 
 /* ── ITEM IMAGE ── */

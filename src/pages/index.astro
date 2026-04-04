@@ -1,10 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 import MarqueeGallery from '../components/MarqueeGallery.astro';
 import '../styles/global.css';
-import '../styles/index.css';
+import '../styles/hero.css';
 import '../styles/priceguide.css';
+import '../styles/about.css';
+import '../styles/cta.css';
  
 const galleryImages: string[] = [
   '/images/imgi_4_650395250_25888888610794866_8401919460525743794_n.jpg',
@@ -164,87 +167,6 @@ const tiers = [
     </div>
   </section>
 
-  <!-- ── REVIEWS ── -->
-  <section class="reviews" id="reviews">
-    <h2 class="reviews-title">Our Happy Customers</h2>
-    <div class="reviews-rule"></div>
-
-    <div class="reviews-carousel">
-      <button class="reviews-arrow reviews-prev" aria-label="Previous review">&#8249;</button>
-
-      <div class="reviews-track-wrap">
-        <div class="reviews-track">
-
-          <div class="review-slide">
-            <div class="review-img-wrap">
-              <img src="/images/imgi_15_542759485_1331610202302030_3496552279551058264_n.jpg" alt="Customer fursuit" class="review-img" />
-            </div>
-            <div class="review-content">
-              <span class="review-qdeco review-qdeco--open">&ldquo;</span>
-              <blockquote class="review-quote">Super cute fursuit, amazing quality, great ventilation and vision. The seller was super kind and amazing to work with.</blockquote>
-              <span class="review-qdeco review-qdeco--close">&rdquo;</span>
-              <div class="review-stars">★★★★★</div>
-            </div>
-          </div>
-
-          <div class="review-slide">
-            <div class="review-img-wrap">
-              <img src="/images/imgi_8_649224438_18092107570873773_3593664648647826824_n.jpg" alt="Customer fursuit" class="review-img" />
-            </div>
-            <div class="review-content">
-              <span class="review-qdeco review-qdeco--open">&ldquo;</span>
-              <blockquote class="review-quote">Absolutely love my suit! The craftsmanship is incredible and it arrived faster than expected. Will definitely be ordering again.</blockquote>
-              <span class="review-qdeco review-qdeco--close">&rdquo;</span>
-              <div class="review-stars">★★★★★</div>
-            </div>
-          </div>
-
-          <div class="review-slide">
-            <div class="review-img-wrap">
-              <img src="/images/imgi_22_650999120_18106227037885867_9219586718479070233_n.jpg" alt="Customer fursuit" class="review-img" />
-            </div>
-            <div class="review-content">
-              <span class="review-qdeco review-qdeco--open">&ldquo;</span>
-              <blockquote class="review-quote">Exceeded all my expectations. Communication was excellent throughout the whole process and the end result was stunning.</blockquote>
-              <span class="review-qdeco review-qdeco--close">&rdquo;</span>
-              <div class="review-stars">★★★★★</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <button class="reviews-arrow reviews-next" aria-label="Next review">&#8250;</button>
-    </div>
-
-    <div class="reviews-dots"></div>
-  </section>
-
-  <script>
-    const track = document.querySelector('.reviews-track') as HTMLElement;
-    const slides = Array.from(document.querySelectorAll('.review-slide')) as HTMLElement[];
-    const dotsWrap = document.querySelector('.reviews-dots') as HTMLElement;
-    let current = 0;
-
-    const dots = slides.map((_, i) => {
-      const d = document.createElement('button');
-      d.className = 'reviews-dot' + (i === 0 ? ' active' : '');
-      d.setAttribute('aria-label', `Review ${i + 1}`);
-      d.addEventListener('click', () => goTo(i));
-      dotsWrap.appendChild(d);
-      return d;
-    });
-
-    function goTo(n: number) {
-      current = (n + slides.length) % slides.length;
-      track.style.transform = `translateX(-${current * 100}%)`;
-      dots.forEach((d, i) => d.classList.toggle('active', i === current));
-    }
-
-    document.querySelector('.reviews-prev')!.addEventListener('click', () => goTo(current - 1));
-    document.querySelector('.reviews-next')!.addEventListener('click', () => goTo(current + 1));
-  </script>
-
   <!-- ── CTA BANNER ── -->
   <section class="cta-banner">
     <img src="/images/cta-banner.jpg" alt="" class="cta-bg" aria-hidden="true" />
@@ -255,27 +177,21 @@ const tiers = [
     </div>
   </section>
 
-  <!-- ── FOOTER ── -->
-  <footer class="footer">
-    <div class="footer-inner">
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.35, rootMargin: '0px 0px -80px 0px' }
+    );
+    document.querySelectorAll('.pg-item, .about-text, .about-img-wrap, .cta-banner').forEach((el) => observer.observe(el));
+  </script>
 
-      <p class="footer-tagline">Delivering smiles to the Furry Community and<br />Costume Enthusiasts alike since 2014</p>
-
-      <div class="footer-contact">
-        <p>Augusta ME, 04330</p>
-        <a href="mailto:CraftyWolf@ccsmascots.net">CraftyWolf@ccsmascots.net</a>
-      </div>
-
-      <nav class="footer-links">
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">TikTok</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-        <a href="/privacy">Privacy and Cookies</a>
-      </nav>
-
-    </div>
-  </footer>
+  <Footer />
 
 </Base>
