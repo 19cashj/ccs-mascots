@@ -15,21 +15,29 @@
 }
 
 .about-text {
-  opacity: 0;
-  translate: -48px 0;
   transition: opacity 0.6s ease, translate 0.6s ease;
 }
 
 .about-img-wrap {
-  opacity: 0;
-  translate: 48px 0;
   transition: opacity 0.6s ease 0.15s, translate 0.6s ease 0.15s;
 }
 
-.about-text.visible,
-.about-img-wrap.visible {
-  opacity: 1;
-  translate: 0 0;
+@media (scripting: enabled) {
+  .about-text {
+    opacity: 0;
+    translate: -48px 0;
+  }
+
+  .about-img-wrap {
+    opacity: 0;
+    translate: 48px 0;
+  }
+
+  .about-text.visible,
+  .about-img-wrap.visible {
+    opacity: 1;
+    translate: 0 0;
+  }
 }
 
 .about-heading {

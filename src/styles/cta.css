@@ -31,14 +31,19 @@
 }
 
 .cta-overlay > * {
-  opacity: 0;
-  translate: 0 24px;
   transition: opacity 0.6s ease, translate 0.6s ease;
 }
 
-.cta-banner.visible .cta-overlay > *:nth-child(1) { opacity: 1; translate: 0 0; transition-delay: 0s;    }
-.cta-banner.visible .cta-overlay > *:nth-child(2) { opacity: 1; translate: 0 0; transition-delay: 0.12s; }
-.cta-banner.visible .cta-overlay > *:nth-child(3) { opacity: 1; translate: 0 0; transition-delay: 0.24s; }
+@media (scripting: enabled) {
+  .cta-overlay > * {
+    opacity: 0;
+    translate: 0 24px;
+  }
+
+  .cta-banner.visible .cta-overlay > *:nth-child(1) { opacity: 1; translate: 0 0; transition-delay: 0s;    }
+  .cta-banner.visible .cta-overlay > *:nth-child(2) { opacity: 1; translate: 0 0; transition-delay: 0.12s; }
+  .cta-banner.visible .cta-overlay > *:nth-child(3) { opacity: 1; translate: 0 0; transition-delay: 0.24s; }
+}
 
 .cta-heading {
   font-family: 'Fredoka One', cursive;

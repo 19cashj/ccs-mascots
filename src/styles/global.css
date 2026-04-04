@@ -1,3 +1,15 @@
+h1 {
+  font-family: 'Raleway', sans-serif;
+}
+
+h2, h3 {
+  font-family: 'Catamaran', sans-serif;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
