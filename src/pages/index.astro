@@ -2,180 +2,21 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import MarqueeGallery from '../components/MarqueeGallery.astro';
+import Hero from '../components/Hero.astro';
+import PricingGuide from '../components/PricingGuide.astro';
+import About from '../components/About.astro';
+import CtaBanner from '../components/CtaBanner.astro';
 import '../styles/global.css';
-import '../styles/hero.css';
-import '../styles/priceguide.css';
-import '../styles/about.css';
-import '../styles/cta.css';
- 
-const galleryImages: string[] = [
-  '/images/imgi_4_650395250_25888888610794866_8401919460525743794_n.jpg',
-  '/images/imgi_4_658212590_18414597787192824_3964572917485297192_n.jpg',
-  '/images/imgi_6_645515842_1558910825408559_8876760470022643830_n.jpg',
-  '/images/imgi_8_649224438_18092107570873773_3593664648647826824_n.jpg',
-  '/images/imgi_10_627173060_18553405954010839_8532855200301839239_n.jpg',
-  '/images/imgi_12_611723605_18547309051010839_3812523570113101312_n.jpg',
-  '/images/imgi_13_590402301_18540007450010839_1918693086465875745_n.jpg',
-  '/images/imgi_15_542759485_1331610202302030_3496552279551058264_n.jpg',
-  '/images/imgi_16_541472509_18521286889010839_4740806053630733928_n (1).jpg',
-  '/images/imgi_20_651144389_18140545483495878_1572600906342957209_n.jpg',
-  '/images/imgi_22_650999120_18106227037885867_9219586718479070233_n.jpg',
-  '/images/imgi_23_518254492_18511792132010839_5498531674267893422_n (1).jpg',
-  '/images/imgi_25_649794838_18057855314408296_3138593465742726697_n.jpg',
-  '/images/imgi_27_650360370_18146337472475094_8552298531154662153_n.jpg',
-  '/images/imgi_36_651096719_18170759227394331_1460760374152369830_n.jpg',
-  '/images/imgi_49_617211528_18087791396024410_6348247363512441032_n.jpg',
-  '/images/imgi_51_656848668_18158051332435040_455934051480583350_n.jpg',
-  '/images/imgi_55_654997398_18320830642264926_3996230597930177189_n.jpg',
-  '/images/imgi_58_650253504_18095138905823143_5277713311563687253_n.jpg',
-  '/images/imgi_59_656042286_18336611983171779_436269229251073727_n.jpg',
-  '/images/imgi_63_530042659_734694479359491_2751720454806985734_n.jpg',
-  '/images/imgi_66_655296111_18412788157133164_8303497130303952745_n.jpg',
-];
- 
-const tiers = [
-  {
-    name: 'Foam Carved Fursuit Head',
-    price: '$1600+',
-    image: '/images/price-heads.jpg',
-    description: 'Our foam-based heads are meticulously custom carved and feature a full neoprene scuba-type lining for exceptional comfort and fit. The 3D printed plastic eyes are designed with waterproof printed mesh, ensuring effortless cleaning and exceptional durability.',
-  },
-  {
-    name: '3D Print Base Fursuit Head',
-    price: '$1600+',
-    image: '/images/price-heads3d.jpg',
-    description: 'With a 3D printed base, this fantastic option caters to individuals who appreciate a sturdy structure. It comes with the choice of semi-realistic or toony style bases, offering delightful customization opportunities.',
-  },
-  {
-    name: 'Fursuit Mini-Partial',
-    price: '$2200+',
-    image: '/images/price-minipartial.jpg',
-    description: 'Our mini-partials offer you the perfect opportunity to showcase your unique character with style. This top-notch option includes a headpiece, fully lined costume paws, and a fabulous fluffy tail, all designed to truly immerse you in your character.',
-  },
-  {
-    name: 'Fursuit ¾ Partial',
-    price: '$2600+',
-    image: '/images/price-3quarter.jpg',
-    description: 'Are you seeking to elevate your character\'s appearance? Our 3/4 Fursuit option goes above and beyond, incorporating arm sleeves and feet paws to enhance the overall look.',
-  },
-  {
-    name: 'Plantigrade Full Body Fursuit',
-    price: '$3200+',
-    image: '/images/price-plantigrade.jpg',
-    description: 'Just one step away from achieving the ultimate fursuit look. Our full body setup includes a body suit to create an absolutely complete and impressive appearance.',
-  },
-  {
-    name: 'Digitigrade Full Body Fursuit',
-    price: '$3700+',
-    image: '/images/price-digitigrade2.jpg',
-    description: 'The Ultimate Look! Our full-body padded bodysuits are included in the package to help you achieve a beautifully anatomically correct animal appearance. They feature convenient zipper pockets for effortless cleaning, travel, and stuffing replacement. Additionally, we offer the option to add outside pockets upon request.',
-  },
-];
 ---
- 
+
 <Base title="CCS Mascots – Costumes and Fursuits, Maine Made Your Way">
- 
+
   <Nav />
- 
-  <!-- ── HERO ── -->
-  <section class="hero">
- 
-    <div class="hero-left">
-      <div class="logo-wrapper">
-        <img src="/images/logo.webp" alt="CCS Mascots Logo" />
-      </div>
- 
-      <div class="hero-headline">
-        <span class="line-purple">Costumes and</span>
-        <span class="line-purple">Fursuits, Maine</span>
-        <span class="line-pink">Made Your Way</span>
-      </div>
- 
-      <p class="hero-tagline">
-        Affordable, Durable, Adorable Custom Costumes made just for you!
-      </p>
- 
-      <div class="hero-buttons">
-        <a href="#pricing" class="btn">Get a Quote</a>
-        <a href="/terms"   class="btn">Terms of Service</a>
-      </div>
-    </div>
- 
-    <MarqueeGallery images={galleryImages} />
- 
-  </section>
- 
-  <!-- ── PRICING ── -->
-  <section class="pg" id="pricing">
-    <div class="pg-page">
 
-      <header class="pg-header">
-        <h1 class="pg-header-title">Price Guide</h1>
-        <div class="pg-header-rule"></div>
-      </header>
-
-      <div class="pg-list">
-        {tiers.map((tier) => (
-          <article class="pg-item">
-            <div class="pg-item-img-wrap">
-              <img src={tier.image} alt={tier.name} class="pg-item-img" />
-            </div>
-            <div class="pg-item-body">
-              <h2 class="pg-item-name">{tier.name}</h2>
-              <div class="pg-item-price-wrap">
-                <span class="pg-item-from">Starting at</span>
-                <span class="pg-item-price">{tier.price}</span>
-              </div>
-              <p class="pg-item-desc">{tier.description}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <aside class="pg-disclaimer">
-        <strong>Please note:</strong> Prices listed are for basic with no added extras. 
-        Costs may increase to reflect added details and design difficulty.
-      </aside>
-
-    </div>
-  </section>
-
-  <!-- ── ABOUT ── -->
-  <section class="about" id="about">
-    <div class="about-inner">
-
-      <div class="about-text">
-        <h2 class="about-heading">About Us</h2>
-        <div class="about-rule"></div>
-        <p class="about-body">
-          Local to the Maine Furry Community since 2014, we have prided ourselves on providing
-          Quality, Affordable Mascot Style Costumes. We use innovative methods such as 3D modeling
-          and printing, as well as the finest fabrics and materials, to create a comfortable and
-          durable costume that will last for years to come.
-        </p>
-      </div>
-
-      <div class="about-img-wrap">
-        <img
-          src="/images/about-us.jpg"
-          alt="CCS Mascots group photo"
-          class="about-img"
-        />
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ── CTA BANNER ── -->
-  <section class="cta-banner">
-    <img src="/images/cta-banner.jpg" alt="" class="cta-bg" aria-hidden="true" />
-    <div class="cta-overlay">
-      <h2 class="cta-heading">Ready to Bring Your Character to Life?</h2>
-      <p class="cta-sub">Custom fursuits built with love, right here in Maine.</p>
-      <a href="#pricing" class="btn cta-btn">Get a Quote</a>
-    </div>
-  </section>
+  <Hero />
+  <PricingGuide />
+  <About />
+  <CtaBanner />
 
   <script>
     const observer = new IntersectionObserver(
