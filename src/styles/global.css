@@ -172,6 +172,10 @@ nav a:hover {
     padding: 0.5rem 1rem;
   }
 
+  .nav-logo {
+    display:none;
+  }
+
   .nav-links {
     gap: 1rem;
     flex-wrap: wrap;
