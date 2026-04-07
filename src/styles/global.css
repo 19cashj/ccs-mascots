@@ -35,7 +35,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Nunito', sans-serif;
-  background: var(--cream);
+  background: var(--cream) url('/images/logan-voss-ZnKC0csB1WY-unsplash.jpg') center center / cover fixed;
   color: var(--text);
   overflow-x: hidden;
 }
