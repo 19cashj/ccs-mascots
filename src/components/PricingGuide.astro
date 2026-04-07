@@ -1,41 +1,43 @@
 ---
 import '../styles/priceguide.css';
 
+const base = import.meta.env.BASE_URL;
+
 const tiers = [
   {
     name: 'Foam Carved Fursuit Head',
     price: '$1600+',
-    image: '/images/price-heads.jpg',
+    image: `${base}images/price-heads.jpg`,
     description: 'Our foam-based heads are meticulously custom carved and feature a full neoprene scuba-type lining for exceptional comfort and fit. The 3D printed plastic eyes are designed with waterproof printed mesh, ensuring effortless cleaning and exceptional durability.',
   },
   {
     name: '3D Print Base Fursuit Head',
     price: '$1600+',
-    image: '/images/price-heads3d.jpg',
+    image: `${base}images/price-heads3d.jpg`,
     description: 'With a 3D printed base, this fantastic option caters to individuals who appreciate a sturdy structure. It comes with the choice of semi-realistic or toony style bases, offering delightful customization opportunities.',
   },
   {
     name: 'Fursuit Mini-Partial',
     price: '$2200+',
-    image: '/images/price-minipartial.jpg',
+    image: `${base}images/price-minipartial.jpg`,
     description: 'Our mini-partials offer you the perfect opportunity to showcase your unique character with style. This top-notch option includes a headpiece, fully lined costume paws, and a fabulous fluffy tail, all designed to truly immerse you in your character.',
   },
   {
     name: 'Fursuit ¾ Partial',
     price: '$2600+',
-    image: '/images/price-3quarter.jpg',
+    image: `${base}images/price-3quarter.jpg`,
     description: 'Are you seeking to elevate your character\'s appearance? Our 3/4 Fursuit option goes above and beyond, incorporating arm sleeves and feet paws to enhance the overall look.',
   },
   {
     name: 'Plantigrade Full Body Fursuit',
     price: '$3200+',
-    image: '/images/price-plantigrade.jpg',
+    image: `${base}images/price-plantigrade.jpg`,
     description: 'Just one step away from achieving the ultimate fursuit look. Our full body setup includes a body suit to create an absolutely complete and impressive appearance.',
   },
   {
     name: 'Digitigrade Full Body Fursuit',
     price: '$3700+',
-    image: '/images/price-digitigrade2.jpg',
+    image: `${base}images/price-digitigrade2.jpg`,
     description: 'The Ultimate Look! Our full-body padded bodysuits are included in the package to help you achieve a beautifully anatomically correct animal appearance. They feature convenient zipper pockets for effortless cleaning, travel, and stuffing replacement. Additionally, we offer the option to add outside pockets upon request.',
   },
 ];

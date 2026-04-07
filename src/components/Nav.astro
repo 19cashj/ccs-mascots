@@ -1,16 +1,17 @@
 ---
+const base = import.meta.env.BASE_URL;
 const links = [
-{ label: 'Gallery',      href: '/gallery' },
-  { label: 'Our Store',    href: '/store' },
-  { label: 'Latest News',  href: '/news' },
+  { label: 'Gallery',      href: `${base}gallery` },
+  { label: 'Our Store',    href: `${base}store` },
+  { label: 'Latest News',  href: `${base}news` },
 ];
 ---
 <nav>
-  <a href="/" class="nav-logo" aria-label="Home">
-    <img src="/images/logo.webp" alt="CCS Mascots" />
+  <a href={base} class="nav-logo" aria-label="Home">
+    <img src={`${base}images/logo.webp`} alt="CCS Mascots" />
   </a>
   <div class="nav-links">
-    <a href="/">Home</a>
+    <a href={base}>Home</a>
     {links.map(link => (
       <a href={link.href}>{link.label}</a>
     ))}
