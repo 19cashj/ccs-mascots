@@ -1,8 +1,7 @@
 ---
 import MarqueeGallery from './MarqueeGallery.astro';
 import '../styles/hero.css';
-
-const base = import.meta.env.BASE_URL;
+const baseUrl = import.meta.env.BASE_URL;
 
 const galleryImages: string[] = [
   'images/imgi_4_650395250_25888888610794866_8401919460525743794_n.jpg',
@@ -27,14 +26,14 @@ const galleryImages: string[] = [
   'images/imgi_59_656042286_18336611983171779_436269229251073727_n.jpg',
   'images/imgi_63_530042659_734694479359491_2751720454806985734_n.jpg',
   'images/imgi_66_655296111_18412788157133164_8303497130303952745_n.jpg',
-].map(p => `${base}${p}`);
+].map((p) => `${baseUrl}${p}`);
 ---
 
 <section class="hero">
 
   <div class="hero-left">
     <div class="logo-wrapper">
-      <img src={`${base}images/logo.webp`} alt="CCS Mascots Logo" />
+      <img src={`${baseUrl}images/logo.webp`} alt="CCS Mascots Logo" />
     </div>
 
     <div class="hero-headline">
@@ -48,8 +47,8 @@ const galleryImages: string[] = [
     </p>
 
     <div class="hero-buttons">
-      <a href="#pricing" class="btn">Get a Quote</a>
-      <a href={`${base}terms`} class="btn">Terms of Service</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdvfWdapp_bzKXglitzdxh65CiGRf7PifEItHlmHBU5zKwX_Q/viewform" target="_blank" rel="noopener noreferrer" class="btn">Get a Quote</a>
+      <a href={`https://docs.google.com/document/d/1TyKMxOpOX514vxL4cl_tLCc27aMnGeRZZWeNfWybef0/edit?tab=t.0`} target="_blank" rel="noopener noreferrer" class="btn">Terms of Service</a>
     </div>
   </div>
 

@@ -1,6 +1,6 @@
 ---
 import '../styles/about.css';
-const base = import.meta.env.BASE_URL;
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <section class="about" id="about">
@@ -19,7 +19,7 @@ const base = import.meta.env.BASE_URL;
 
     <div class="about-img-wrap">
       <img
-        src={`${base}images/about-us.jpg`}
+        src={`${baseUrl}images/about-us.jpg`}
         alt="CCS Mascots group photo"
         class="about-img"
       />

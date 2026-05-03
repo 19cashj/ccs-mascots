@@ -1,20 +1,14 @@
 ---
-const base = import.meta.env.BASE_URL;
-const links = [
-  { label: 'Gallery',      href: `${base}gallery` },
-  { label: 'Our Store',    href: `${base}store` },
-  { label: 'Latest News',  href: `${base}news` },
-];
+const baseUrl = import.meta.env.BASE_URL;
 ---
 <nav>
-  <a href={base} class="nav-logo" aria-label="Home">
-    <img src={`${base}images/logo.webp`} alt="CCS Mascots" />
+  <a href={baseUrl} class="nav-logo" aria-label="Home">
+    <img src={`${baseUrl}images/logo.webp`} alt="CCS Mascots" />
   </a>
   <div class="nav-links">
-    <a href={base}>Home</a>
-    {links.map(link => (
-      <a href={link.href}>{link.label}</a>
-    ))}
+    <a href={baseUrl}>Home</a>
+    <a href={`${baseUrl}gallery`}>Gallery</a>
+    <a href="https://www.etsy.com/shop/ccsmascots/" target="_blank" rel="noopener noreferrer">Our Store</a>
   </div>
 </nav>
 
