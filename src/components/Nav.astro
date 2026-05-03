@@ -3,7 +3,13 @@ const baseUrl = import.meta.env.BASE_URL;
 ---
 <nav>
   <a href={baseUrl} class="nav-logo" aria-label="Home">
-    <img src={`${baseUrl}images/logo.webp`} alt="CCS Mascots" />
+    <img
+      src={`${baseUrl}images/logo.webp`}
+      alt="CCS Mascots"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
   </a>
   <div class="nav-links">
     <a href={baseUrl}>Home</a>

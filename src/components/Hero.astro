@@ -1,54 +1,55 @@
 ---
 import MarqueeGallery from './MarqueeGallery.astro';
 import '../styles/hero.css';
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../keystatic.config';
 const baseUrl = import.meta.env.BASE_URL;
+const reader = createReader(process.cwd(), keystaticConfig);
+interface Props {
+  content?: {
+    heroHeadlineLine1?: string;
+    heroHeadlineLine2?: string;
+    heroHeadlineLine3?: string;
+    heroTagline?: string;
+    heroPrimaryButtonText?: string;
+    heroPrimaryButtonUrl?: string;
+    heroSecondaryButtonText?: string;
+    heroSecondaryButtonUrl?: string;
+  } | null;
+}
+const { content } = Astro.props as Props;
 
-const galleryImages: string[] = [
-  'images/imgi_4_650395250_25888888610794866_8401919460525743794_n.jpg',
-  'images/imgi_4_658212590_18414597787192824_3964572917485297192_n.jpg',
-  'images/imgi_6_645515842_1558910825408559_8876760470022643830_n.jpg',
-  'images/imgi_8_649224438_18092107570873773_3593664648647826824_n.jpg',
-  'images/imgi_10_627173060_18553405954010839_8532855200301839239_n.jpg',
-  'images/imgi_12_611723605_18547309051010839_3812523570113101312_n.jpg',
-  'images/imgi_13_590402301_18540007450010839_1918693086465875745_n.jpg',
-  'images/imgi_15_542759485_1331610202302030_3496552279551058264_n.jpg',
-  'images/imgi_16_541472509_18521286889010839_4740806053630733928_n (1).jpg',
-  'images/imgi_20_651144389_18140545483495878_1572600906342957209_n.jpg',
-  'images/imgi_22_650999120_18106227037885867_9219586718479070233_n.jpg',
-  'images/imgi_23_518254492_18511792132010839_5498531674267893422_n (1).jpg',
-  'images/imgi_25_649794838_18057855314408296_3138593465742726697_n.jpg',
-  'images/imgi_27_650360370_18146337472475094_8552298531154662153_n.jpg',
-  'images/imgi_36_651096719_18170759227394331_1460760374152369830_n.jpg',
-  'images/imgi_49_617211528_18087791396024410_6348247363512441032_n.jpg',
-  'images/imgi_51_656848668_18158051332435040_455934051480583350_n.jpg',
-  'images/imgi_55_654997398_18320830642264926_3996230597930177189_n.jpg',
-  'images/imgi_58_650253504_18095138905823143_5277713311563687253_n.jpg',
-  'images/imgi_59_656042286_18336611983171779_436269229251073727_n.jpg',
-  'images/imgi_63_530042659_734694479359491_2751720454806985734_n.jpg',
-  'images/imgi_66_655296111_18412788157133164_8303497130303952745_n.jpg',
-].map((p) => `${baseUrl}${p}`);
+const galleries = await reader.singletons.galleries.read();
+const galleryImages: string[] = (galleries?.marqueeGalleryImages ?? [])
+  .map((item) => `${baseUrl}${item.image.replace(/^\//, '')}`);
 ---
 
 <section class="hero">
 
   <div class="hero-left">
     <div class="logo-wrapper">
-      <img src={`${baseUrl}images/logo.webp`} alt="CCS Mascots Logo" />
+      <img
+        src={`${baseUrl}images/logo.webp`}
+        alt="CCS Mascots Logo"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
     </div>
 
     <div class="hero-headline">
-      <span class="line-purple">Costumes and</span>
-      <span class="line-purple">Fursuits, Maine</span>
-      <span class="line-pink">Made Your Way</span>
+      <span class="line-purple">{content?.heroHeadlineLine1 ?? 'Costumes and'}</span>
+      <span class="line-purple">{content?.heroHeadlineLine2 ?? 'Fursuits, Maine'}</span>
+      <span class="line-pink">{content?.heroHeadlineLine3 ?? 'Made Your Way'}</span>
     </div>
 
     <p class="hero-tagline">
-      Affordable, Durable, Adorable Custom Costumes made just for you!
+      {content?.heroTagline ?? 'Affordable, Durable, Adorable Custom Costumes made just for you!'}
     </p>
 
     <div class="hero-buttons">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdvfWdapp_bzKXglitzdxh65CiGRf7PifEItHlmHBU5zKwX_Q/viewform" target="_blank" rel="noopener noreferrer" class="btn">Get a Quote</a>
-      <a href={`https://docs.google.com/document/d/1TyKMxOpOX514vxL4cl_tLCc27aMnGeRZZWeNfWybef0/edit?tab=t.0`} target="_blank" rel="noopener noreferrer" class="btn">Terms of Service</a>
+      <a href={content?.heroPrimaryButtonUrl ?? 'https://docs.google.com/forms/d/e/1FAIpQLSdvfWdapp_bzKXglitzdxh65CiGRf7PifEItHlmHBU5zKwX_Q/viewform'} target="_blank" rel="noopener noreferrer" class="btn">{content?.heroPrimaryButtonText ?? 'Get a Quote'}</a>
+      <a href={content?.heroSecondaryButtonUrl ?? 'https://docs.google.com/document/d/1TyKMxOpOX514vxL4cl_tLCc27aMnGeRZZWeNfWybef0/edit?tab=t.0'} target="_blank" rel="noopener noreferrer" class="btn">{content?.heroSecondaryButtonText ?? 'Terms of Service'}</a>
     </div>
   </div>
 

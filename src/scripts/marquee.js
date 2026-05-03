@@ -4,7 +4,7 @@
  * GALLERY_IMAGES is injected by the Astro page as a global via:
  *   <script define:vars={{ GALLERY_IMAGES }}>
  *
- * To add images: edit the `galleryImages` array in src/pages/index.astro.
+ * To add images: edit the `galleryImages` list in Keystatic (Galleries singleton).
  * Each entry is a path relative to /public, e.g. '/images/fursuit1.jpg'
  */
 

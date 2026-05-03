@@ -10,7 +10,7 @@ const { images } = Astro.props;
 <!--
   Astro's define:vars injects the images array as a JS variable
   into this inline script block, which then runs the full marquee logic.
-  Add image paths to the `galleryImages` array in index.astro.
+  Add images in Keystatic under the Galleries singleton `galleryImages` field.
 -->
 <script define:vars={{ GALLERY_IMAGES: images }}>
 
@@ -32,11 +32,23 @@ function splitImages(n) {
 function makeItem(src) {
   const d = document.createElement('div');
   if (src) {
-    d.className = 'gallery-item has-img';
+    d.className = 'gallery-item is-loading';
     const img = document.createElement('img');
+    img.className = 'gallery-item-img is-loading';
     img.src = src;
     img.alt = 'CCS Mascots fursuit';
     img.loading = 'lazy';
+    img.decoding = 'async';
+    const markLoaded = () => {
+      d.classList.remove('is-loading');
+      d.classList.add('has-img');
+      img.classList.remove('is-loading');
+      img.classList.add('is-loaded');
+    };
+    img.addEventListener('load', markLoaded, { once: true });
+    if (img.complete && img.naturalWidth > 0) {
+      markLoaded();
+    }
     d.appendChild(img);
   } else {
     d.className = 'gallery-item';

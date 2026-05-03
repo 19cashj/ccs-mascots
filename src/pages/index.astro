@@ -1,4 +1,4 @@
----
+﻿---
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
@@ -7,16 +7,31 @@ import PricingGuide from '../components/PricingGuide.astro';
 import About from '../components/About.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import '../styles/global.css';
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../keystatic.config';
+
+const baseUrl = import.meta.env.BASE_URL;
+const reader = createReader(process.cwd(), keystaticConfig);
+const homeContent = await reader.singletons.home.read();
+const pricingCards = await reader.collections.pricingGuideCards.all();
+const tiers = pricingCards
+  .filter(({ entry }) => !!entry.image)
+  .map(({ entry }) => ({
+    name: entry.title,
+    price: entry.price,
+    image: `${baseUrl}${entry.image!.replace(/^\//, '')}`,
+    description: entry.description,
+  }));
 ---
 
-<Base title="CCS Mascots – Costumes and Fursuits, Maine Made Your Way">
+<Base title="CCS Mascots - Costumes and Fursuits, Maine Made Your Way">
 
   <Nav />
 
-  <Hero />
-  <PricingGuide />
-  <About />
-  <CtaBanner />
+  <Hero content={homeContent} />
+  <PricingGuide title={homeContent?.pricingTitle} disclaimer={homeContent?.pricingDisclaimer} tiers={tiers} />
+  <About title={homeContent?.aboutTitle} body={homeContent?.aboutBody} image={homeContent?.aboutImage ? `${baseUrl}${homeContent.aboutImage.replace(/^\//, '')}` : undefined} />
+  <CtaBanner title={homeContent?.ctaTitle} subtitle={homeContent?.ctaSubtitle} buttonText={homeContent?.ctaButtonText} buttonUrl={homeContent?.ctaButtonUrl} image={homeContent?.ctaImage ? `${baseUrl}${homeContent.ctaImage.replace(/^\//, '')}` : undefined} />
 
   <script>
     const observer = new IntersectionObserver(
@@ -33,6 +48,7 @@ import '../styles/global.css';
     document.querySelectorAll('.pg-item, .about-text, .about-img-wrap, .cta-banner').forEach((el) => observer.observe(el));
   </script>
 
-  <Footer />
+  <Footer tagline={homeContent?.footerTagline} location={homeContent?.footerLocation} email={homeContent?.footerEmail} />
 
 </Base>
+
