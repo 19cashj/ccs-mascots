@@ -1,4 +1,7 @@
-﻿---
+---
+import { Image } from 'astro:assets';
+import bgImage from '../images/logan-voss-ZnKC0csB1WY-unsplash.jpg';
+
 interface Props {
   title?: string;
 }
@@ -15,11 +18,11 @@ const baseUrl = import.meta.env.BASE_URL;
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Fredoka+One&family=Raleway:wght@400;700;900&family=Catamaran:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" as="image" href={`${baseUrl}images/logo.webp`} />
     <link rel="icon" type="image/x-icon" href={`${baseUrl}favicon.ico?v=2`} />
     <link rel="shortcut icon" type="image/x-icon" href={`${baseUrl}favicon.ico?v=2`} />
   </head>
   <body>
+    <Image src={bgImage} alt="" class="site-bg" aria-hidden="true" />
     <slot />
   </body>
 </html>

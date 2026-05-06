@@ -3,6 +3,7 @@
 .about {
   background: var(--lavender);
   padding: 5rem 2rem;
+  overflow-x: hidden;
 }
 
 .about-inner {
@@ -79,8 +80,7 @@
 
 .about-img {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  height: auto;
   border-radius: 16px;
   display: block;
   position: relative;

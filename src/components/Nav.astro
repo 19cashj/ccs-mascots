@@ -1,10 +1,12 @@
 ---
+import { Image } from 'astro:assets';
+import logoImage from '../images/logo.webp';
 const baseUrl = import.meta.env.BASE_URL;
 ---
 <nav>
   <a href={baseUrl} class="nav-logo" aria-label="Home">
-    <img
-      src={`${baseUrl}images/logo.webp`}
+    <Image
+      src={logoImage}
       alt="CCS Mascots"
       loading="eager"
       fetchpriority="high"

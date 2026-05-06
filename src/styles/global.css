@@ -35,9 +35,19 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Nunito', sans-serif;
-  background: var(--cream) url('/images/logan-voss-ZnKC0csB1WY-unsplash.jpg') center center / cover fixed;
+  background: var(--cream);
   color: var(--text);
   overflow-x: hidden;
+}
+
+.site-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
 }
 
 /* ── NAV ── */

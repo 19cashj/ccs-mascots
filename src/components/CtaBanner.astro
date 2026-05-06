@@ -1,24 +1,27 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import defaultCtaImage from '../images/ctaImage.jpg';
 import '../styles/cta.css';
-const baseUrl = import.meta.env.BASE_URL;
+
 interface Props {
   title?: string;
   subtitle?: string;
   buttonText?: string;
   buttonUrl?: string;
-  image?: string;
+  image?: ImageMetadata;
 }
 const {
   title = 'Ready to Bring Your Character to Life?',
   subtitle = 'Custom fursuits built with love, right here in Maine.',
   buttonText = 'Get a Quote',
   buttonUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdvfWdapp_bzKXglitzdxh65CiGRf7PifEItHlmHBU5zKwX_Q/viewform',
-  image = `${baseUrl}images/cta-banner.jpg`,
+  image = defaultCtaImage,
 } = Astro.props as Props;
 ---
 
 <section class="cta-banner">
-  <img
+  <Image
     src={image}
     alt=""
     class="cta-bg"

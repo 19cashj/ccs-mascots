@@ -1,7 +1,8 @@
 /* ── PAGE WRAPPER ── */
 
 .pg {
-    background-color: var(--white);
+  background-color: var(--white);
+  overflow-x: hidden;
 }
 
 .pg-page {
