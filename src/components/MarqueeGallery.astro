@@ -14,7 +14,18 @@ const { images } = Astro.props;
 -->
 <script define:vars={{ GALLERY_IMAGES: images }}>
 
-const mobile = () => window.innerWidth <= 768;
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+const IMAGES = shuffle(GALLERY_IMAGES);
+
+const mobile = () => window.innerWidth <= 768 || window.innerHeight < 830;
 
 function setNavHeight() {
   const nav = document.querySelector('nav');
@@ -25,7 +36,7 @@ window.addEventListener('resize', setNavHeight);
 
 function splitImages(n) {
   const buckets = Array.from({ length: n }, () => []);
-  GALLERY_IMAGES.forEach((img, i) => buckets[i % n].push(img));
+  IMAGES.forEach((img, i) => buckets[i % n].push(img));
   return buckets;
 }
 
@@ -66,14 +77,14 @@ function makeCol(dir, images) {
 
 function buildDesktop(container) {
   container.innerHTML = '';
-  const [col1imgs, col2imgs] = GALLERY_IMAGES.length > 0 ? splitImages(2) : [[], []];
+  const [col1imgs, col2imgs] = IMAGES.length > 0 ? splitImages(2) : [[], []];
   container.appendChild(makeCol('up',   col1imgs));
   container.appendChild(makeCol('down', col2imgs));
 }
 
 function buildMobile(container) {
   container.innerHTML = '';
-  const [row1imgs, row2imgs] = GALLERY_IMAGES.length > 0 ? splitImages(2) : [[], []];
+  const [row1imgs, row2imgs] = IMAGES.length > 0 ? splitImages(2) : [[], []];
   ['up', 'down'].forEach((dir, i) => {
     const wrap = document.createElement('div');
     wrap.className = 'row-wrap';
@@ -171,5 +182,6 @@ window.addEventListener('resize', () => {
   if (now !== wasMobile) { wasMobile = now; build(); }
   else requestAnimationFrame(() => requestAnimationFrame(() => startAnimations(now)));
 });
+
 
 </script>

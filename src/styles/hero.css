@@ -173,9 +173,9 @@
   }
 }
 
-/* ── MOBILE (≤768px) ── */
+/* ── MOBILE (≤768px or height <830px) ── */
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 829px) {
   .hero {
     flex-direction: column;
     align-items: center;
