@@ -1,5 +1,3 @@
-/* ── ABOUT ── */
-
 .about {
   background: var(--lavender);
   padding: 5rem 2rem;
@@ -66,7 +64,6 @@
 .about-img-wrap {
   position: relative;
   padding: 14px;
-  /* base positioning — animation state declared above */
 }
 
 .about-img-wrap::before {
@@ -86,7 +83,6 @@
   position: relative;
 }
 
-/* ── MOBILE (≤768px) ── */
 
 @media (max-width: 768px) {
   .about-inner {

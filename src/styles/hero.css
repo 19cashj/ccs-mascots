@@ -1,5 +1,3 @@
-/* ── HERO ── */
-
 .hero {
   display: flex;
   justify-content: center;
@@ -56,8 +54,6 @@
   flex-wrap: wrap;
   margin-top: 0.4rem;
 }
-
-/* ── HERO RIGHT: marquee panel ── */
 
 .hero-right {
   position: relative;
@@ -161,8 +157,6 @@
   }
 }
 
-/* ── SINGLE COLUMN (≤1400px) ── */
-
 @media (max-width: 1400px) {
   .hero-right {
     width: var(--col-w);
@@ -172,8 +166,6 @@
     display: none;
   }
 }
-
-/* ── MOBILE (≤768px or height <830px) ── */
 
 @media (max-width: 768px), (max-height: 829px) {
   .hero {

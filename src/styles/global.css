@@ -50,8 +50,6 @@ body {
   z-index: -1;
 }
 
-/* ── NAV ── */
-
 nav {
   background: var(--lavender);
   display: flex;
@@ -95,8 +93,6 @@ nav a:hover {
   color: var(--purple);
 }
 
-/* ── BUTTONS ── */
-
 .btn {
   display: inline-block;
   font-family: 'Nunito', sans-serif;
@@ -115,8 +111,6 @@ nav a:hover {
 .btn:hover {
   background: var(--pink-dark);
 }
-
-/* ── FOOTER ── */
 
 .footer {
   background: var(--white);
