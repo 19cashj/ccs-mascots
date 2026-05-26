@@ -9,6 +9,8 @@ import '../styles/gallery.css';
 import { createReader } from '@keystatic/core/reader';
 import keystaticConfig from '../../keystatic.config';
 
+export const prerender = true;
+
 const reader = createReader(process.cwd(), keystaticConfig);
 
 const allImages = import.meta.glob('/src/images/**/*.{jpg,jpeg,png,webp,gif,avif}', { eager: true }) as Record<string, { default: ImageMetadata }>;
