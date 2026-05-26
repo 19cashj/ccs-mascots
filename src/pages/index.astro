@@ -28,9 +28,34 @@ const tiers = pricingCards
 
 const aboutImage = homeContent?.about?.aboutImage ? allImages[homeContent.about.aboutImage]?.default : undefined;
 const ctaImage = homeContent?.cta?.ctaImage ? allImages[homeContent.cta.ctaImage]?.default : undefined;
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "CCS Mascots",
+  "description": "Affordable, durable, and adorable custom fursuits and mascot costumes handmade in Augusta, Maine since 2014.",
+  "url": "https://ccsmascots.net",
+  "email": "CraftyWolf@ccsmascots.net",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Augusta",
+    "addressRegion": "ME",
+    "postalCode": "04330",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://www.facebook.com/CCSMascots/",
+    "https://www.instagram.com/ccsmascots/",
+    "https://www.tiktok.com/@ccsmascots"
+  ]
+});
 ---
 
-<Base title="CCS Mascots - Costumes and Fursuits, Maine Made Your Way">
+<Base
+  title="CCS Mascots - Costumes and Fursuits, Maine Made Your Way"
+  description="Affordable, durable, and adorable custom fursuits and mascot costumes handmade in Augusta, Maine."
+>
+  <script type="application/ld+json" is:inline slot="head" set:html={jsonLd} />
 
   <Nav />
 

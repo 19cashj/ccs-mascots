@@ -4,8 +4,19 @@ import bgImage from '../images/logan-voss-ZnKC0csB1WY-unsplash.jpg';
 
 interface Props {
   title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
 }
-const { title = 'CCS Mascots - Costumes and Fursuits, Maine' } = Astro.props;
+
+const {
+  title = 'CCS Mascots - Costumes and Fursuits, Maine',
+  description,
+  ogImage,
+  canonical,
+} = Astro.props;
+
+const canonicalUrl = canonical ?? Astro.url.href;
 const baseUrl = import.meta.env.BASE_URL;
 ---
 <!doctype html>
@@ -14,12 +25,29 @@ const baseUrl = import.meta.env.BASE_URL;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:site_name" content="CCS Mascots" />
+    <meta property="og:locale" content="en_US" />
+    {description && <meta property="og:description" content={description} />}
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Fredoka+One&family=Raleway:wght@400;700;900&family=Catamaran:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" type="image/x-icon" href={`${baseUrl}favicon.ico?v=2`} />
     <link rel="shortcut icon" type="image/x-icon" href={`${baseUrl}favicon.ico?v=2`} />
+    <slot name="head" />
   </head>
   <body>
     <Image src={bgImage} alt="" class="site-bg" aria-hidden="true" />

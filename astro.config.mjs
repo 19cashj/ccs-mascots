@@ -2,9 +2,10 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import markdoc from '@astrojs/markdoc';
 import keystatic from '@keystatic/astro';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://19cashj.github.io',
+  site: 'https://ccsmascots.net',
   base: '/',
-  integrations: [react(), markdoc(), keystatic()],
+  integrations: [react(), markdoc(), keystatic(), sitemap()],
 });

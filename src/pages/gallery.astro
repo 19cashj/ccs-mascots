@@ -23,7 +23,10 @@ const images = (galleries?.galleryImages ?? [])
   .filter((item): item is { src: ImageMetadata; alt: string } => !!item.src);
 ---
 
-<Base title="Gallery – CCS Mascots">
+<Base
+  title="Gallery – CCS Mascots"
+  description="Browse our gallery of custom fursuits and mascot costumes handmade in Augusta, Maine."
+>
 
   <Nav />
 

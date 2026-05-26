@@ -31,6 +31,9 @@
   display: flex;
   flex-direction: column;
   line-height: 1.08;
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 .line-purple,
