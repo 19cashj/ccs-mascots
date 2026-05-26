@@ -10,5 +10,7 @@ export default defineConfig({
   base: '/',
   integrations: [react(), markdoc(), keystatic(), sitemap()],
   output: 'server',
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    session: false,
+  }),
 });
