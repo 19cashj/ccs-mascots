@@ -15,6 +15,7 @@ const reader = createReader(process.cwd(), keystaticConfig);
 
 const allImages = import.meta.glob('/src/images/**/*.{jpg,jpeg,png,webp,gif,avif}', { eager: true }) as Record<string, { default: ImageMetadata }>;
 
+const homeContent = await reader.singletons.home.read();
 const galleries = await reader.singletons.galleries.read();
 const images = (galleries?.galleryImages ?? [])
   .filter((item): item is typeof item & { image: string } => !!item.image)
@@ -87,6 +88,13 @@ const images = (galleries?.galleryImages ?? [])
     });
   </script>
 
-  <Footer />
+  <Footer
+  tagline={homeContent?.footer?.footerTagline}
+  location={homeContent?.footer?.footerLocation}
+  email={homeContent?.footer?.footerEmail}
+  facebookUrl={homeContent?.footer?.facebookUrl}
+  instagramUrl={homeContent?.footer?.instagramUrl}
+  tiktokUrl={homeContent?.footer?.tiktokUrl}
+  />
 
 </Base>
