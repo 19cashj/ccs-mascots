@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ccsmascots.net/sitemap-index.xml
+Sitemap: https://ccsmascots.com/sitemap-index.xml

@@ -100,7 +100,7 @@ export default config({
             defaultValue: 'Delivering smiles to the Furry Community and Costume Enthusiasts alike since 2014',
           }),
           footerLocation: fields.text({ label: 'Location', defaultValue: 'Augusta ME, 04330' }),
-          footerEmail: fields.text({ label: 'Email', defaultValue: 'CraftyWolf@ccsmascots.net' }),
+          footerEmail: fields.text({ label: 'Email', defaultValue: 'thecraftycanine@yahoo.com' }),
           facebookUrl: fields.url({ label: 'Facebook URL', defaultValue: 'https://www.facebook.com/CCSMascots/' }),
           instagramUrl: fields.url({ label: 'Instagram URL', defaultValue: 'https://www.instagram.com/ccsmascots/' }),
           tiktokUrl: fields.url({ label: 'TikTok URL', defaultValue: 'https://www.tiktok.com/@ccsmascots' }),

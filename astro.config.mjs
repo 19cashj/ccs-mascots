@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
-  site: 'https://ccsmascots.net',
+  site: 'https://ccsmascots.com',
   base: '/',
   integrations: [react(), markdoc(), keystatic(), sitemap()],
   output: 'server',
