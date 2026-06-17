@@ -64,6 +64,7 @@ const preloadImages = (
             class="gallery-grid-img is-loading"
             loading="eager"
             fetchpriority={index < preloadImages.length ? 'high' : 'low'}
+            decoding="sync"
           />
         </div>
       ))}

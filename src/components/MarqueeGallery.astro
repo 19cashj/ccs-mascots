@@ -48,8 +48,9 @@ function makeItem(src) {
     img.className = 'gallery-item-img is-loading';
     img.src = src;
     img.alt = 'CCS Mascots fursuit';
-    img.decoding = 'async';
+    img.decoding = 'sync';
     img.loading = 'eager';
+    img.fetchPriority = 'high';
 
     const markLoaded = () => {
       d.classList.remove('is-loading');
@@ -58,11 +59,28 @@ function makeItem(src) {
       img.classList.add('is-loaded');
     };
 
-    img.addEventListener('load', markLoaded, { once: true });
+    const waitForDecode = async () => {
+      if (typeof img.decode !== 'function') {
+        markLoaded();
+        return;
+      }
+
+      try {
+        await img.decode();
+      } catch {
+        // If decoding fails, fall back to showing the image so the carousel doesn't stay gray.
+      }
+
+      markLoaded();
+    };
+
+    img.addEventListener('load', () => {
+      void waitForDecode();
+    }, { once: true });
     img.addEventListener('error', markLoaded, { once: true }); // don't hang on 404s
 
     if (img.complete && img.naturalWidth > 0) {
-      markLoaded();
+      void waitForDecode();
     }
 
     d.appendChild(img);
