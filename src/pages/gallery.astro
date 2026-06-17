@@ -50,7 +50,7 @@ const images = (galleries?.galleryImages ?? [])
             src={src}
             alt={alt}
             class="gallery-grid-img is-loading"
-            loading="lazy"
+            loading="eager"
             decoding="async"
           />
         </div>
@@ -72,30 +72,7 @@ const images = (galleries?.galleryImages ?? [])
       const col = lefts.indexOf(Math.round(item.getBoundingClientRect().left));
       item.style.animationDelay = `${col * 100}ms`;
     });
-
-    const revealItem = (item: HTMLElement) => {
-      item.classList.add('visible');
-    };
-
-    if (!('IntersectionObserver' in window)) {
-      items.forEach(revealItem);
-    } else {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            revealItem(entry.target as HTMLElement);
-            observer.unobserve(entry.target);
-          });
-        },
-        {
-          threshold: 0.15,
-          rootMargin: '0px 0px -10% 0px',
-        }
-      );
-
-      items.forEach((item) => observer.observe(item));
-    }
+    items.forEach((item) => item.classList.add('go'));
 
     const imgs = Array.from(grid.querySelectorAll('.gallery-grid-img')) as HTMLImageElement[];
 
