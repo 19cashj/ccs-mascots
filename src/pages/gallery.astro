@@ -60,8 +60,10 @@ const images = (galleries?.galleryImages ?? [])
   </main>
 
   <script>
-  window.addEventListener('DOMContentLoaded', () => {
+  const initGallery = () => {
     const grid = document.querySelector('.gallery-grid') as HTMLElement;
+    if (!grid) return;
+
     const items = Array.from(grid.querySelectorAll('.gallery-grid-item')) as HTMLElement[];
 
     const lefts = [...new Set(items.map((el) => Math.round(el.getBoundingClientRect().left)))]
@@ -77,8 +79,8 @@ const images = (galleries?.galleryImages ?? [])
     const markLoaded = (img: HTMLImageElement) => {
       img.classList.remove('is-loading');
       img.classList.add('is-loaded');
-      img.parentElement?.classList.remove('is-loading');
-      img.parentElement?.classList.add('has-img');
+      img.closest('.gallery-grid-item')?.classList.remove('is-loading');
+      img.closest('.gallery-grid-item')?.classList.add('has-img');
     };
 
     imgs.forEach((img) => {
@@ -89,7 +91,13 @@ const images = (galleries?.galleryImages ?? [])
         img.addEventListener('error', () => markLoaded(img), { once: true }); // don't hang on broken images
       }
     });
-  });
+  };
+
+  if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', initGallery, { once: true });
+  } else {
+    initGallery();
+  }
 </script>
 
   <Footer

@@ -86,7 +86,7 @@
 }
 
 .gallery-grid-img.is-loading {
-  opacity: 0;
+  opacity: 1;
 }
 
 .gallery-grid-img.is-loaded {
