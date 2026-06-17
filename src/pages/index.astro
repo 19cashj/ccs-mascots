@@ -70,18 +70,23 @@ const jsonLd = JSON.stringify({
   <CtaBanner title={homeContent?.cta?.ctaTitle} subtitle={homeContent?.cta?.ctaSubtitle} buttonText={homeContent?.cta?.ctaButtonText} buttonUrl={homeContent?.cta?.ctaButtonUrl ?? undefined} image={ctaImage} />
 
   <script>
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.35, rootMargin: '0px 0px -80px 0px' }
-    );
-    document.querySelectorAll('.pg-item, .about-text, .about-img-wrap, .cta-banner').forEach((el) => observer.observe(el));
+    const initHomeReveals = () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.35, rootMargin: '0px 0px -80px 0px' }
+      );
+
+      document.querySelectorAll('.pg-item, .about-text, .about-img-wrap, .cta-banner').forEach((el) => observer.observe(el));
+    };
+
+    document.addEventListener('astro:page-load', initHomeReveals, { once: true });
   </script>
 
   <Footer

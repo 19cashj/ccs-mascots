@@ -123,11 +123,7 @@ const preloadImages = (
     });
   };
 
-  if (document.readyState === 'loading') {
-    window.addEventListener('DOMContentLoaded', initGallery, { once: true });
-  } else {
-    initGallery();
-  }
+  document.addEventListener('astro:page-load', initGallery, { once: true });
 </script>
 
   <Footer
