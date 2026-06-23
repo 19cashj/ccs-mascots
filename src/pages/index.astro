@@ -36,10 +36,14 @@ const sameAs = [
 const jsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": "https://ccsmascots.com",
   "name": "CCS Mascots",
   "description": "Affordable, durable, and adorable custom fursuits and mascot costumes handmade in Augusta, Maine since 2014.",
   "url": "https://ccsmascots.com",
+  "image": "https://ccsmascots.com/og-image.png",
+  "logo": "https://ccsmascots.com/og-image.png",
   "email": "thecraftycanine@yahoo.com",
+  "priceRange": "$$$",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Augusta",
@@ -55,8 +59,8 @@ const jsonLd = JSON.stringify({
   title="CCS Mascots - Costumes and Fursuits, Maine Made Your Way"
   description="Affordable, durable, and adorable custom fursuits and mascot costumes handmade in Augusta, Maine."
   author="CCS Mascots"
-  twitterSite="@CCSmascots"
-  ogImage="/og-image.png"
+  twitterSite="@CCSMascots"
+  ogImage="https://ccsmascots.com/og-image.png"
 >
   <script type="application/ld+json" is:inline slot="head" set:html={jsonLd} />
 
